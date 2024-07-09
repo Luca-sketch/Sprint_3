@@ -14,6 +14,7 @@ const Login = () => {
       const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         body: formData,
+        credentials: 'include', // Adiciona cookies à requisição
       });
 
       if (response.ok) {
@@ -45,11 +46,12 @@ const Login = () => {
         </div>
         <button type="submit">Logar</button>
         <br></br>
-        <button ><Link to="/usuario">Cadastrar</Link></button>
+        <button><Link to="/usuario">Cadastrar</Link></button>
       </form>
     </div>
   );
 };
 
 export default Login;
+
 

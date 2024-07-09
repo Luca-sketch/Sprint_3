@@ -1,8 +1,6 @@
 import React from 'react';
-import dotenv from 'dotenv';
 import { useForm } from 'react-hook-form';
-
-dotenv.config(); // Carrega as variáveis de ambiente do arquivo .env
+import config from '../../config';
 
 const AtualizarCEP = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -14,17 +12,39 @@ const AtualizarCEP = () => {
     try {
       const response = await fetch('http://localhost:5000/atualizar_cep', {
         method: 'PUT',
-        body: formData,
         headers: {
-          'Authorization': 'Bearer ' + process.env.REACT_APP_API_KEY
-        }
+          'x-api-key': config.API_KEY,
+        },
+        body: formData,
+        credentials: 'include', // Ensure cookies are sent
       });
 
       if (response.ok) {
         alert('CEP atualizado com sucesso!');
       } else {
-        const result = await response.json();
-        alert(result.message || 'Erro durante a atualização do CEP. Por favor, tente novamente.');
+        const errorData = await response.json();
+        alert(`Erro ao atualizar CEP: ${errorData.message}`);
+      }
+    } catch (error) {
+      alert('Erro na requisição: ' + error.message);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/deletar_usuario', {
+        method: 'DELETE',
+        headers: {
+          'x-api-key': config.API_KEY,
+        },
+        credentials: 'include', // Ensure cookies are sent
+      });
+
+      if (response.ok) {
+        alert('Usuário deletado com sucesso!');
+      } else {
+        const errorData = await response.json();
+        alert(`Erro ao deletar usuário: ${errorData.message}`);
       }
     } catch (error) {
       alert('Erro na requisição: ' + error.message);
@@ -42,9 +62,11 @@ const AtualizarCEP = () => {
         </div>
         <button type="submit">Atualizar CEP</button>
       </form>
+      <button onClick={handleDelete} style={{ marginTop: '20px', backgroundColor: 'red', color: 'white' }}>
+        Deletar Usuário
+      </button>
     </div>
   );
 };
 
 export default AtualizarCEP;
-

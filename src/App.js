@@ -7,6 +7,7 @@ import Products from './pages/product/product';
 import Usuario from './pages/cadastro/cadastro';
 import { CartProvider } from './CartContext';
 import AtualizarCEP from './pages/atualizarcep/atualizarcep';
+import Usuarios from './pages/usuarios/usuarios'
 import './App.css';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
                         <Route path="/usuario" element={<Usuario/>} />
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/atualizar" element={<AtualizarCEP/>}/>
+                        <Route path="/usuarios" element={<Usuarios/>}/>
                     </Routes>
                 </Router>
                 <Footer />
