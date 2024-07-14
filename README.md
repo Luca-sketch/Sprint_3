@@ -24,5 +24,5 @@ docker run -d -p 4000:4000 api_cep
 ```
 ### 2. Instalação Tradicional
 ```
- -node index.js
- -npm start
+ node index.js
+ npm start
