@@ -8,7 +8,7 @@ Esta API faz parte do projeto Modern Click Store, mas pode ser utilizada em outr
 
 Este projeto envolve a integração das seções da API (NODE JS) com a comunicação das APIs externas VIA CEP e NOMINATIM.
 
-![Fluxograma da API CEP](https://drive.google.com/file/d/1NBjGPxtzwaBeNNsRebCLOGiGg8gidkVO/view)
+![Fluxograma da API CEP](https://drive.google.com/uc?export=view&id=1NBjGPxtzwaBeNNsRebCLOGiGg8gidkVO)
 
 ## Instruções de Uso
 
@@ -21,8 +21,8 @@ Para executar a API utilizando Docker, siga os seguintes passos:
 ```bash
 docker build -t api_cep .
 docker run -d -p 4000:4000 api_cep
-
-
-###**2. Instalação Tradicional**
+```
+### 2. Instalação Tradicional
+```
  -node index.js
  -npm start
